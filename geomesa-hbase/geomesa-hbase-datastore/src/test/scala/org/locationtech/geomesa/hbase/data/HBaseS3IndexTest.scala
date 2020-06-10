@@ -75,7 +75,7 @@ class HBaseS3IndexTest extends Specification with LazyLogging {
           features.map(_.getID.toInt) must containTheSameElementsAs(0 to 9)
         }
 
-        { // return some features for exclusive geom filter
+        /*{ // return some features for exclusive geom filter
           val filter = "bbox(geom, 38, 59, 45, 61)" +
               " AND dtg between '2010-05-07T00:00:00.000Z' and '2010-05-08T00:00:00.000Z'"
           val features = runQuery(new Query(sft.getTypeName, ECQL.toFilter(filter)))
@@ -293,7 +293,7 @@ class HBaseS3IndexTest extends Specification with LazyLogging {
               containAllOf((0 until 10).map(i => features(i).getAttribute("dtg").asInstanceOf[Date].getTime))
           forall(bin.map(_.lat))(_ mustEqual 60.0)
           bin.map(_.lon) must containAllOf((0 until 10).map(_ + 40.0f))
-        }
+        }*/
       } finally {
         ds.dispose()
       }
